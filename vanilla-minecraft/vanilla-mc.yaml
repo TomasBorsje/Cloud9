@@ -29,6 +29,8 @@ spec:
           ports:
             - containerPort: 25565
           env:
+            - name: MOTD
+              value: "A §l§cMinecraft§r §nserver"
             - name: EULA
               value: "TRUE"
             - name: DIFFICULTY
