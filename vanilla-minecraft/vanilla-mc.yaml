@@ -29,14 +29,18 @@ spec:
           ports:
             - containerPort: 25565
           env:
-            - name: MOTD
-              value: "A §l§cMinecraft§r §nserver"
             - name: EULA
               value: "TRUE"
-            - name: DIFFICULTY
-              value: "normal"
+            # https://docker-minecraft-server.readthedocs.io/en/latest/configuration/jvm-options
             - name: MEMORY # Should be 80% of container mem
               value: 2G
+            - name: USE_AIKAR_FLAGS
+              value: "true"
+            # https://docker-minecraft-server.readthedocs.io/en/latest/configuration/server-properties/
+            - name: DIFFICULTY
+              value: "normal"
+            - name: MOTD
+              value: "A §l§cMinecraft§r §nserver"
           resources:
             requests:
               memory: "2.5Gi"
