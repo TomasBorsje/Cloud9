@@ -33,6 +33,14 @@ spec:
               value: "TRUE"
             - name: DIFFICULTY
               value: "normal"
+            - name: MEMORY # Should be 80% of container mem
+              value: 2G
+          resources:
+            requests:
+              memory: "2.5Gi"
+              cpu: "1000m"
+            limits:
+              memory: "2.5Gi"
           volumeMounts:
             - mountPath: /data
               name: vanilla-minecraft-data
