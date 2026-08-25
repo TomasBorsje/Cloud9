@@ -42,6 +42,8 @@ spec:
           env:
             - name: EULA
               value: "TRUE"
+            - name: ICON
+              value: "https://static.wikia.nocookie.net/deltarune/images/b/ba/Man_overworld_tree.gif"
             # JVM Options
             # https://docker-minecraft-server.readthedocs.io/en/latest/configuration/jvm-options
             - name: MEMORY # Should be 80% of container mem
@@ -61,7 +63,7 @@ spec:
             - name: SPAWN_PROTECTION
               value: "0"
             - name: MOTD
-              value: "§e☀ Rebellion §aMinecraft§r - §fVanilla§r\n§7* Well, there is a server here."
+              value: "§e☀ Rebellion §aMinecraft§r - §fVanilla§r\n§7 * Well, there is a server here."
           resources:
             requests:
               memory: "2.5Gi"

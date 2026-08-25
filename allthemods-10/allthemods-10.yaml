@@ -42,6 +42,8 @@ spec:
           env:
             - name: EULA
               value: "TRUE"
+            - name: ICON
+              value: "https://static.wikia.nocookie.net/deltarune/images/b/ba/Man_overworld_tree.gif"
             # Modded Server Settings
             - name: MODPACK_PLATFORM
               value: "AUTO_CURSEFORGE"
@@ -66,7 +68,7 @@ spec:
             - name: SPAWN_PROTECTION
               value: "0"
             - name: MOTD
-              value: "§e☀ Rebellion §aMinecraft§r - §bAll The Mods 10§r\n§7* Well, there is a server here."
+              value: "§e☀ Rebellion §aMinecraft§r - §bAll The Mods 10§r\n§7 * Well, there is a server here."
           resources:
             requests:
               memory: "10Gi"
