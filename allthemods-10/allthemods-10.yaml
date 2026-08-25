@@ -43,7 +43,7 @@ spec:
             - name: EULA
               value: "TRUE"
             - name: ICON
-              value: "https://raw.githubusercontent.com/TomasBorsje/Cloud9/refs/heads/main/assets/vanilla-minecraft-server-icon.png"
+              value: "https://raw.githubusercontent.com/TomasBorsje/Cloud9/refs/heads/main/assets/modded-minecraft-server-icon.png"
             # Modded Server Settings
             - name: MODPACK_PLATFORM
               value: "AUTO_CURSEFORGE"
