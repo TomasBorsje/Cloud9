@@ -43,7 +43,7 @@ spec:
             - name: EULA
               value: "TRUE"
             - name: ICON
-              value: "https://static.wikia.nocookie.net/deltarune/images/b/ba/Man_overworld_tree.gif"
+              value: "https://raw.githubusercontent.com/TomasBorsje/Cloud9/refs/heads/main/assets/vanilla-minecraft-server-icon.png"
             # Modded Server Settings
             - name: MODPACK_PLATFORM
               value: "AUTO_CURSEFORGE"
