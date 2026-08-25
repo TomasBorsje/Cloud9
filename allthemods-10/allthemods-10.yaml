@@ -69,10 +69,10 @@ spec:
               value: "§e☀ Rebellion §aMinecraft§r - §bAll The Mods 10§r\n§7* Well, there is a server here."
           resources:
             requests:
-              memory: "9Gi"
+              memory: "10Gi"
               cpu: "1000m"
             limits:
-              memory: "9Gi"
+              memory: "10Gi"
           volumeMounts:
             - mountPath: /data
               name: allthemods-10-data
