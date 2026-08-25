@@ -9,6 +9,17 @@ spec:
     requests:
       storage: 10Gi
 ---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: vanilla-minecraft-backups-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Gi
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -31,16 +42,26 @@ spec:
           env:
             - name: EULA
               value: "TRUE"
+            # JVM Options
             # https://docker-minecraft-server.readthedocs.io/en/latest/configuration/jvm-options
             - name: MEMORY # Should be 80% of container mem
               value: 2G
             - name: USE_AIKAR_FLAGS
               value: "true"
+            # Server Properties
             # https://docker-minecraft-server.readthedocs.io/en/latest/configuration/server-properties/
             - name: DIFFICULTY
               value: "normal"
+            - name: OPS
+              value: |-
+                Wingmann
+            - name: WHITELIST
+              value: |-
+                Wingmann
+            - name: SPAWN_PROTECTION
+              value: "0"
             - name: MOTD
-              value: "A §l§cMinecraft§r §nserver"
+              value: "§e☀ Rebellion §aMinecraft§r - §fVanilla§r\n§7* Well, there is a server here."
           resources:
             requests:
               memory: "2.5Gi"
@@ -50,10 +71,27 @@ spec:
           volumeMounts:
             - mountPath: /data
               name: vanilla-minecraft-data
+        - name: vanilla-minecraft-backups
+          image: itzg/mc-backup
+          #imagePullPolicy: Never
+          securityContext:
+            runAsUser: 1000
+          env:
+            - name: BACKUP_INTERVAL
+              value: "24h"
+          volumeMounts:
+            - mountPath: /data
+              name: vanilla-minecraft-data
+              readOnly: true
+            - mountPath: /backups
+              name: vanilla-minecraft-backups
       volumes:
         - name: vanilla-minecraft-data
           persistentVolumeClaim:
             claimName: vanilla-minecraft-pvc
+        - name: vanilla-minecraft-backups
+          persistentVolumeClaim:
+            claimName: vanilla-minecraft-backups-pvc
 ---
 apiVersion: v1
 kind: Service
