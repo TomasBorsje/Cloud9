@@ -26,6 +26,7 @@ metadata:
   name: allthemods-10-server
 spec:
   replicas: 1
+  revisionHistoryLimit: 3
   selector:
     matchLabels:
       app: allthemods-10
