@@ -42,7 +42,12 @@ spec:
               memory: "2Gi"
           volumeMounts:
             - mountPath: /root/.local/share/Terraria/Worlds
-              name: terraria-pvc
+              name: terraria-world
+      volumes:
+        - name: terraria-world
+          persistentVolumeClaim:
+            claimName: terraria-pvc
+          
 ---
 apiVersion: v1
 kind: Service
