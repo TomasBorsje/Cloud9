@@ -29,11 +29,21 @@ spec:
           image: ryshe/terraria:vanilla-1.4.5.8
           ports:
             - containerPort: 7777
+          env:
+            - name: WORLD_PASSWORD
+              valueFrom:
+                secretKeyRef: 
+                  name: terraria-secrets
+                  key: server-password
           args:
             - "-world"
             - "/root/.local/share/Terraria/Worlds/world.wld"
             - "-autocreate"
             - "2"
+            - "--log-opt"
+            - "max-size=200k"
+            - "-pass"
+            - "$(WORLD_PASSWORD)"
           resources:
             requests:
               memory: "2Gi"
