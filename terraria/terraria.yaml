@@ -31,7 +31,7 @@ spec:
             - containerPort: 7777
           args:
             - "-world"
-            - "world.wld"
+            - "/root/.local/share/Terraria/Worlds/world.wld"
             - "-autocreate"
             - "2"
           resources:
