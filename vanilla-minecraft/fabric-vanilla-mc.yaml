@@ -50,8 +50,11 @@ spec:
               value: "required"
             - name: MODRINTH_PROJECTS
               value: |
-                voxyserver:EsIPjK0A 
-                dcintegration:ZZwadcBm
+                fabric-api
+                sodium
+                voxy
+                voxyserver
+                dcintegration
             # Server Properties
             - name: EULA
               value: "TRUE"
