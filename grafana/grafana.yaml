@@ -79,11 +79,12 @@ metadata:
   name: grafana
   namespace: grafana
 spec:
-  ports:
-    - port: 3000
-      protocol: TCP
-      targetPort: http-grafana
+  type: NodePort
   selector:
     app: grafana
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+      nodePort: 30101
   sessionAffinity: None
-  type: LoadBalancer
