@@ -48,6 +48,8 @@ spec:
               value: "26.2"
             - name: MODRINTH_DOWNLOAD_DEPENDENCIES
               value: "required"
+            - name: MODRINTH_PROJECTS_DEFAULT_VERSION_TYPE
+              value: "beta"
             - name: MODRINTH_PROJECTS
               value: |
                 fabric-api
