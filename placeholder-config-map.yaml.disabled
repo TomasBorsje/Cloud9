@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-mod-toml-config
+  namespace: minecraft # match your namespace
+data:
+  # This is the key name you will reference later
+  mymod.toml: |
+    [settings]
+    enabled = true
+    spawnRate = 5
+    # Add your actual mod config content here
+
+spec:
+  template:
+    spec:
+      containers:
+      - name: minecraft-server
+        image: itzg/minecraft-server:latest
+        volumeMounts:
+        # 1. Your main PVC mount (holds worlds, other mods, etc.)
+        - name: minecraft-data
+          mountPath: /data
+
+        # 2. Mount the individual .toml file into its exact subfolder
+        - name: mod-config-volume
+          mountPath: /data/config/the-mod-folder/mymod.toml
+          subPath: mymod.toml # matches the key in the ConfigMap data
+
+      volumes:
+      # 1. Your existing PVC
+      - name: minecraft-data
+        persistentVolumeClaim:
+          claimName: your-minecraft-pvc-name
+
+      # 2. Reference the ConfigMap
+      - name: mod-config-volume
+        configMap:
+          name: my-mod-toml-config
