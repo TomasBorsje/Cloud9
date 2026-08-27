@@ -63,6 +63,8 @@ spec:
             - name: WHITELIST
               value: |-
                 Wingmann
+            - name: ENFORCE_SECURE_PROFILE
+              value: "false"
             - name: SPAWN_PROTECTION
               value: "0"
             - name: MOTD
