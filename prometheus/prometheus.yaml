@@ -49,15 +49,15 @@ spec:
           volumeMounts:
             - mountPath: /prometheus
               name: prometheus-data
-            - mountPath: /etc/prometheus
-              name: prometheus-config
+            # - mountPath: /etc/prometheus
+            #   name: prometheus-config
       volumes:
         - name: prometheus-data
           persistentVolumeClaim:
             claimName: prometheus-data-pvc
-        - name: prometheus-config
-          persistentVolumeClaim:
-            claimName: prometheus-config-pvc
+        # - name: prometheus-config
+        #   persistentVolumeClaim:
+        #     claimName: prometheus-config-pvc
 ---
 apiVersion: v1
 kind: Service
