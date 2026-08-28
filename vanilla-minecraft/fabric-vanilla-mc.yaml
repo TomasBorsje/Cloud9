@@ -35,6 +35,16 @@ spec:
       labels:
         app: fabric-vanilla-minecraft
     spec:
+      initContainers:
+      - name: inject-discord-config
+        image: alpine:latest
+        command: ['sh', '-c', 'mkdir -p /data/config && cp /secret-source/Discord-Integration.toml /data/config/Discord-Integration.toml']
+        volumeMounts:
+          - mountPath: /data
+            name: fabric-vanilla-minecraft-data
+          - mountPath: /secret-source
+            name: fabric-vanilla-discordconfig
+            readOnly: true
       containers:
         - name: fabric-vanilla-minecraft
           image: itzg/minecraft-server
@@ -95,9 +105,6 @@ spec:
           volumeMounts:
             - mountPath: /data
               name: fabric-vanilla-minecraft-data
-            - mountPath: /data/config/Discord-Integration.toml
-              name: fabric-vanilla-discordconfig
-              subPath: Discord-Integration.toml
         - name: fabric-vanilla-minecraft-backups
           image: itzg/mc-backup
           #imagePullPolicy: Never
