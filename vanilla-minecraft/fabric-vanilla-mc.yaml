@@ -39,7 +39,7 @@ spec:
       - name: inject-discord-config
         image: alpine:latest
         command: 
-          - sh,
+          - sh
           - -c
           - |
             mkdir -p /data/config
