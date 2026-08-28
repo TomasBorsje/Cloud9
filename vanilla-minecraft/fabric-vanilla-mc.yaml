@@ -95,6 +95,9 @@ spec:
           volumeMounts:
             - mountPath: /data
               name: fabric-vanilla-minecraft-data
+            - mountPath: /data/config/Discord-Integration.toml
+              name: fabric-vanilla-discordconfig
+              subPath: Discord-Integration.toml
         - name: fabric-vanilla-minecraft-backups
           image: itzg/mc-backup
           #imagePullPolicy: Never
@@ -109,9 +112,6 @@ spec:
               readOnly: true
             - mountPath: /backups
               name: fabric-vanilla-minecraft-backups
-            - mountPath: /data/config/Discord-Integration.toml
-              name: fabric-vanilla-discordconfig
-              subPath: Discord-Integration.toml
       volumes:
         - name: fabric-vanilla-minecraft-data
           persistentVolumeClaim:
