@@ -38,7 +38,13 @@ spec:
       initContainers:
       - name: inject-discord-config
         image: alpine:latest
-        command: ['sh', '-c', 'mkdir -p /data/config && cp /secret-source/Discord-Integration.toml /data/config/Discord-Integration.toml']
+        command: 
+          - sh,
+          - -c
+          - |
+            mkdir -p /data/config
+            cp /secret-source/Discord-Integration.toml /data/config/Discord-Integration.toml
+            chmod 666 /data/config/Discord-Integration.toml
         volumeMounts:
           - mountPath: /data
             name: fabric-vanilla-minecraft-data
