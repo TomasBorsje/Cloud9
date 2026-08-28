@@ -77,6 +77,7 @@ spec:
                 individual-keep-inventory-(updated)
                 styled-nicknames
                 chunky:4Eotm6ov
+                netherportalfix:GQpccFqg
             # Server Properties
             - name: EULA
               value: "TRUE"
