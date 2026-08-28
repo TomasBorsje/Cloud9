@@ -121,7 +121,7 @@ spec:
             claimName: fabric-vanilla-minecraft-backups-pvc
         - name: fabric-vanilla-discordconfig
           secret:
-            name: fabric-vanilla-discordconfig-secret
+            secretName: fabric-vanilla-discordconfig-secret
 ---
 apiVersion: v1
 kind: Service
