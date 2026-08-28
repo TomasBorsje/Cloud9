@@ -109,6 +109,9 @@ spec:
               readOnly: true
             - mountPath: /backups
               name: fabric-vanilla-minecraft-backups
+            - mountPath: /data/config/Discord-Integration.toml
+              name: fabric-vanilla-discordconfig
+              subPath: Discord-Integration.toml
       volumes:
         - name: fabric-vanilla-minecraft-data
           persistentVolumeClaim:
@@ -116,6 +119,9 @@ spec:
         - name: fabric-vanilla-minecraft-backups
           persistentVolumeClaim:
             claimName: fabric-vanilla-minecraft-backups-pvc
+        - name: fabric-vanilla-discordconfig
+          secret:
+            name: fabric-vanilla-discordconfig-secret
 ---
 apiVersion: v1
 kind: Service
