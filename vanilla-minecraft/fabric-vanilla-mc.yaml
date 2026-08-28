@@ -73,6 +73,10 @@ spec:
                 voxy
                 voxyserver
                 dcintegration
+                afk-announcer
+                individual-keep-inventory-(updated)
+                styled-nicknames
+                chunky:4Eotm6ov
             # Server Properties
             - name: EULA
               value: "TRUE"
@@ -83,7 +87,7 @@ spec:
             # JVM Options
             # https://docker-minecraft-server.readthedocs.io/en/latest/configuration/jvm-options
             - name: MEMORY # Should be 80% of container mem
-              value: 3G
+              value: 4G
             - name: USE_MEOWICE_FLAGS
               value: "true"
             # Server Properties
@@ -104,10 +108,10 @@ spec:
               value: "§e☀ Rebellion §aMinecraft§r - §fVanilla§r\n§7 * Well, there is a server here."
           resources:
             requests:
-              memory: "3.75Gi"
+              memory: "5Gi"
               cpu: "1000m"
             limits:
-              memory: "3.75Gi"
+              memory: "5Gi"
           volumeMounts:
             - mountPath: /data
               name: fabric-vanilla-minecraft-data

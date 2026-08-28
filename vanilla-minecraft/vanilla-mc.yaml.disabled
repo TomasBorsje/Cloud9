@@ -41,6 +41,8 @@ spec:
           ports:
             - containerPort: 25565
           env:
+            - name: VERSION
+              value: "26.2"
             - name: EULA
               value: "TRUE"
             - name: ICON
