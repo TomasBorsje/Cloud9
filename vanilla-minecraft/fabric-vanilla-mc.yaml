@@ -67,6 +67,7 @@ spec:
             - name: MODRINTH_PROJECTS_DEFAULT_VERSION_TYPE
               value: "beta"
             - name: MODRINTH_PROJECTS
+              # Add https://modrinth.com/mod/discord-mc-chat at some point
               value: |
                 fabric-api
                 sodium
@@ -78,6 +79,7 @@ spec:
                 styled-nicknames
                 chunky:4Eotm6ov
                 netherportalfix:GQpccFqg
+                discord-mc-chat
             # Server Properties
             - name: EULA
               value: "TRUE"
