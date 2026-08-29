@@ -67,13 +67,11 @@ spec:
             - name: MODRINTH_PROJECTS_DEFAULT_VERSION_TYPE
               value: "beta"
             - name: MODRINTH_PROJECTS
-              # Add https://modrinth.com/mod/discord-mc-chat at some point
               value: |
                 fabric-api
                 sodium
                 voxy
                 voxyserver
-                dcintegration
                 afk-announcer
                 individual-keep-inventory-(updated)
                 styled-nicknames
