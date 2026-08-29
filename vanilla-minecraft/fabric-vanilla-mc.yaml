@@ -111,8 +111,6 @@ spec:
             requests:
               memory: "5Gi"
               cpu: "1000m"
-            limits:
-              memory: "5Gi"
           volumeMounts:
             - mountPath: /data
               name: fabric-vanilla-minecraft-data
