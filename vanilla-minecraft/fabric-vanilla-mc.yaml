@@ -78,6 +78,7 @@ spec:
                 chunky:4Eotm6ov
                 netherportalfix:GQpccFqg
                 discord-mc-chat
+                convenient-mobgriefing
             # Server Properties
             - name: EULA
               value: "TRUE"
