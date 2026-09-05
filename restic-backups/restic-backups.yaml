@@ -24,17 +24,19 @@ spec:
                 secretKeyRef:
                   name: restic-secret
                   key: password
-            command:
-              - "/bin/sh"
-              - "-c"
-              - |
-                echo "Starting Fabric Minecraft backup..."
-                restic backup /data/fabric-minecraft --tag fabric-minecraft
+              command: "sleep"
+              args: "infinity"
+            # command:
+            #   - "/bin/sh"
+            #   - "-c"
+            #   - |
+            #     echo "Starting Fabric Minecraft backup..."
+            #     restic backup /data/fabric-minecraft --tag fabric-minecraft
                 
-                echo "Starting Terraria backup..."
-                restic backup /data/terraria --tag terraria
+            #     echo "Starting Terraria backup..."
+            #     restic backup /data/terraria --tag terraria
                 
-                echo "All backups completed successfully!"
+            #     echo "All backups completed successfully!"
             volumeMounts:
             - mountPath: /data/fabric-minecraft
               name: fabric-minecraft-vol
