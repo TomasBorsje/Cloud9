@@ -28,7 +28,13 @@ spec:
               - "/bin/sh"
               - "-c"
               - |
-                  sleep infinity
+                echo "Starting Fabric Minecraft backup..."
+                restic backup /data/fabric-minecraft --tag fabric-minecraft -o sftp.args="-i /root/.ssh/id_rsa"
+                
+                echo "Starting Terraria backup..."
+                restic backup /data/terraria --tag terraria -o sftp.args="-i /root/.ssh/id_rsa"
+                
+                echo "Backups completed."
             volumeMounts:
             - mountPath: /data/fabric-minecraft
               name: fabric-minecraft-vol
@@ -36,7 +42,8 @@ spec:
             - mountPath: /data/terraria
               name: terraria-vol
               readOnly: true
-            - mountPath: ~/.ssh
+            - mountPath: /root/.ssh/id_rsa
+              subPath: id_rsa
               name: restic-ssh-keys-vol
               readOnly: true
           restartPolicy: OnFailure
@@ -50,8 +57,7 @@ spec:
           - name: restic-ssh-keys-vol
             secret:
               secretName: restic-secret
+              defaultMode: 0400
               items:
-              - key: ssh-key-public
-                path: id_rsa.pub
               - key: ssh-key-private
                 path: id_rsa
