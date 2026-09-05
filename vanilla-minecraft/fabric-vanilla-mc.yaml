@@ -79,9 +79,6 @@ spec:
                 netherportalfix:GQpccFqg
                 discord-mc-chat
                 convenient-mobgriefing
-            - name: MODS
-              value: |
-                https://github.com/jaredlyon/dynmap-26.2/releases/download/v3.9-fabric-26.2/Dynmap-3.9-SNAPSHOT-fabric-26.2.jar
             # Server Properties
             - name: EULA
               value: "TRUE"
@@ -120,7 +117,7 @@ spec:
               name: fabric-vanilla-minecraft-data
         - name: fabric-vanilla-minecraft-backups
           image: itzg/mc-backup
-          imagePullPolicy: Never
+          #imagePullPolicy: Never
           securityContext:
             runAsUser: 1000
           env:
@@ -156,6 +153,3 @@ spec:
       port: 25565
       targetPort: 25565
       nodePort: 30004
-    - protocol: TCP
-      port: 8123
-      targetPort: 8123
