@@ -1,0 +1,63 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: nightly-game-server-backups
+spec:
+  schedule: "0 18 * * *" # Runs every night at 6PM UTC -> 6AM NZST
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: restic-backup
+            image: restic/restic:latest
+            env:
+            - name: RESTIC_REPOSITORY
+              valueFrom:
+                secretKeyRef:
+                  name: restic-secret
+                  key: repository
+            - name: RESTIC_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: restic-secret
+                  key: password
+            command:
+              - "/bin/sh"
+              - "-c"
+              - |
+                echo "Starting Fabric Minecraft backup..."
+                restic backup /data/fabric-minecraft --tag fabric-minecraft
+                
+                echo "Starting Terraria backup..."
+                restic backup /data/terraria --tag terraria
+                
+                echo "All backups completed successfully!"
+            volumeMounts:
+            - mountPath: /data/fabric-minecraft
+              name: fabric-minecraft-vol
+              readOnly: true
+            - mountPath: /data/terraria
+              name: terraria-vol
+              readOnly: true
+            - mountPath: ~/.ssh
+              name: ssh-keys-vol
+              readOnly: true
+          restartPolicy: OnFailure
+          volumes:
+          - name: fabric-minecraft-vol
+            persistentVolumeClaim:
+              claimName: fabric-vanilla-minecraft-backups-pvc
+          - name: terraria-vol
+            persistentVolumeClaim:
+              claimName: terraria-pvc
+          - name: restic-ssh-keys-vol
+            secret:
+              secretName: restic-secret
+              items:
+              - key: ssh-key-public
+                path: id_rsa.pub
+              - key: ssh-key-private
+                path: id_rsa
