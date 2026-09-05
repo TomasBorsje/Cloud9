@@ -29,10 +29,10 @@ spec:
               - "-c"
               - |
                 echo "Starting Fabric Minecraft backup..."
-                restic backup /data/fabric-minecraft --tag fabric-minecraft -o sftp.args="-i /root/.ssh/id_rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o PubkeyAcceptedKeyTypes=+ssh-rsa"
+                restic backup /data/fabric-minecraft --tag fabric-minecraft -o sftp.args="-vv -i /root/.ssh/id_rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o PubkeyAcceptedAlgorithms=+ssh-rsa"
                 
                 echo "Starting Terraria backup..."
-                restic backup /data/terraria --tag terraria -o sftp.args="-i /root/.ssh/id_rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o PubkeyAcceptedKeyTypes=+ssh-rsa"
+                restic backup /data/terraria --tag terraria -o sftp.args="-vv -i /root/.ssh/id_rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o PubkeyAcceptedAlgorithms=+ssh-rsa"
                 
                 echo "Backups completed."
             volumeMounts:
