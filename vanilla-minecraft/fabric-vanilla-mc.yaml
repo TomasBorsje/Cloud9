@@ -149,7 +149,12 @@ spec:
   selector:
     app: fabric-vanilla-minecraft
   ports:
-    - protocol: TCP
+    - name: game
+      protocol: TCP
       port: 25565
       targetPort: 25565
       nodePort: 30004
+    - name: dynmap
+      protocol: TCP
+      port: 8123
+      targetPort: 8123
