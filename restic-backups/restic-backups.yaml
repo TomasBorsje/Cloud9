@@ -43,7 +43,7 @@ spec:
               name: terraria-vol
               readOnly: true
             - mountPath: ~/.ssh
-              name: ssh-keys-vol
+              name: restic-ssh-keys-vol
               readOnly: true
           restartPolicy: OnFailure
           volumes:
