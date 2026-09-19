@@ -77,7 +77,7 @@ spec:
                 styled-nicknames?
                 chunky?
                 netherportalfix?
-                discord-mc-chat?
+                #discord-mc-chat?
                 convenient-mobgriefing?
             # Server Properties
             - name: EULA
