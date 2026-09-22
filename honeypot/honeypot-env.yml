@@ -23,7 +23,7 @@ spec:
   # Allow DNS resolution
   - to:
     - namespaceSelector:
-        kubernetes.io/metadata.name: kube-system
+        "kubernetes.io/metadata.name": kube-system
     ports:
     - protocol: UDP
       port: 53
