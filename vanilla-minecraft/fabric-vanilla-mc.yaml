@@ -35,22 +35,22 @@ spec:
       labels:
         app: fabric-vanilla-minecraft
     spec:
-      initContainers:
-      - name: inject-discord-config
-        image: alpine:latest
-        command: 
-          - sh
-          - -c
-          - |
-            mkdir -p /data/config
-            cp /secret-source/Discord-Integration.toml /data/config/Discord-Integration.toml
-            chmod 666 /data/config/Discord-Integration.toml
-        volumeMounts:
-          - mountPath: /data
-            name: fabric-vanilla-minecraft-data
-          - mountPath: /secret-source
-            name: fabric-vanilla-discordconfig
-            readOnly: true
+      # initContainers:
+      # - name: inject-discord-config
+      #   image: alpine:latest
+      #   command: 
+      #     - sh
+      #     - -c
+      #     - |
+      #       mkdir -p /data/config
+      #       cp /secret-source/Discord-Integration.toml /data/config/Discord-Integration.toml
+      #       chmod 666 /data/config/Discord-Integration.toml
+      #   volumeMounts:
+      #     - mountPath: /data
+      #       name: fabric-vanilla-minecraft-data
+      #     - mountPath: /secret-source
+      #       name: fabric-vanilla-discordconfig
+      #       readOnly: true
       containers:
         - name: fabric-vanilla-minecraft
           image: itzg/minecraft-server
@@ -77,7 +77,7 @@ spec:
                 styled-nicknames?
                 chunky?
                 netherportalfix?
-                #discord-mc-chat?
+                discord-mc-chat?
                 convenient-mobgriefing?
             # Server Properties
             - name: EULA
@@ -136,9 +136,9 @@ spec:
         - name: fabric-vanilla-minecraft-backups
           persistentVolumeClaim:
             claimName: fabric-vanilla-minecraft-backups-pvc
-        - name: fabric-vanilla-discordconfig
-          secret:
-            secretName: fabric-vanilla-discordconfig-secret
+        # - name: fabric-vanilla-discordconfig
+        #   secret:
+        #     secretName: fabric-vanilla-discordconfig-secret
 ---
 apiVersion: v1
 kind: Service
