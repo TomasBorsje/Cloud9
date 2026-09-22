@@ -19,11 +19,9 @@ spec:
   egress:
   # Allow talking to other pods in the namespace
   - to:
-    - name: other-pods
     - podSelector: {}
   # Allow DNS resolution
   - to:
-    - name: dns
     - namespaceSelector:
         kubernetes.io/metadata.name: kube-system
     ports:
@@ -33,7 +31,6 @@ spec:
       port: 53
   # Allow outbound internet traffic, deny other internal networks
   - to:
-    - name: outbound-internet
     - ipBlock:
         cidr: 0.0.0.0/0
         except:
