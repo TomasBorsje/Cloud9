@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/cloudnative-pg/cloudnative-pg/blob/main
+    repoURL: https://github.com/cloudnative-pg/cloudnative-pg
     path: releases/cnpg-1.30.0.yaml
     targetRevision: 4b5e244
     directory:
