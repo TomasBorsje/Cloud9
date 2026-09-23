@@ -31,7 +31,6 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: cloudflared-tunnel-secret
-                  namespace: cloudflared
                   key: token
           command:
             - cloudflared
