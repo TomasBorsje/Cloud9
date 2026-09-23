@@ -19,6 +19,14 @@ Useful commands for administrating the server.
 ### Creating a Sealed Secret
 ```bash
 kubectl create secret generic <name> --dry-run=client -o yaml --from-file=<path to folder>
+
+
+
 kubeseal --format yaml < unlocked-secret.yaml > sealed-secret.yaml
 ```
+```bash
+kubectl create secret generic <name> --dry-run=client -o yaml --from-literal=key=value
+```
+for a literal token.
+
 Then commit the secret for ArgoCD to deploy it.
