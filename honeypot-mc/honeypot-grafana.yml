@@ -1,0 +1,86 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: honeypot-mc-grafana-pvc
+  namespace: honeypot-mc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: honeypot-mc-grafana
+  name: honeypot-mc-grafana
+  namespace: honeypot-mc
+spec:
+  selector:
+    matchLabels:
+      app: honeypot-mc-grafana
+  template:
+    metadata:
+      labels:
+        app: honeypot-mc-grafana
+    spec:
+      securityContext:
+        fsGroup: 472
+        supplementalGroups:
+          - 0
+      containers:
+        - name: honeypot-mc-grafana
+          image: grafana/grafana:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+              name: http-grafana
+              protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /robots.txt
+              port: 3000
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 30
+            successThreshold: 1
+            timeoutSeconds: 2
+          livenessProbe:
+            failureThreshold: 3
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            successThreshold: 1
+            tcpSocket:
+              port: 3000
+            timeoutSeconds: 1
+          resources:
+            requests:
+              cpu: 250m
+              memory: 750Mi
+          volumeMounts:
+            - mountPath: /var/lib/grafana
+              name: honeypot-mc-grafana-pv
+      volumes:
+        - name: honeypot-mc-grafana-pv
+          persistentVolumeClaim:
+            claimName: honeypot-mc-grafana-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: honeypot-mc-grafana
+  namespace: honeypot-mc
+spec:
+  ports:
+    - port: 3000
+      nodePort: 40001
+      protocol: TCP
+      targetPort: http-grafana
+  selector:
+    app: honeypot-mc-grafana
+  sessionAffinity: None
+  type: NodePort
