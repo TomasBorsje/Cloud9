@@ -77,7 +77,6 @@ metadata:
 spec:
   ports:
     - port: 3000
-      nodePort: 31001
       protocol: TCP
       targetPort: http-grafana
   selector:
