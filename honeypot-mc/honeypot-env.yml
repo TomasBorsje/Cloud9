@@ -16,6 +16,17 @@ spec:
   ingress:
   - from:
     - podSelector: {} 
+  # Allow cloudflared to see Grafana
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: default
+      podSelector:
+        matchLabels:
+          pod: cloudflared
+    ports:
+      - protocol: TCP
+        port: 3000
   egress:
   # Allow talking to other pods in the namespace
   - to:
