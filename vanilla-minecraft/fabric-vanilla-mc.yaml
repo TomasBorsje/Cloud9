@@ -66,6 +66,7 @@ spec:
               value: "required"
             - name: MODRINTH_PROJECTS_DEFAULT_VERSION_TYPE
               value: "beta"
+            # individual-keep-inventory-(updated)?
             - name: MODRINTH_PROJECTS
               value: |
                 fabric-api
@@ -73,7 +74,6 @@ spec:
                 voxy?
                 voxyserver?
                 afk-announcer?
-                individual-keep-inventory-(updated)?
                 styled-nicknames?
                 chunky?
                 netherportalfix?
