@@ -6,7 +6,10 @@ Hosts the following:
 ### ![Vanilla Server Logo](https://raw.githubusercontent.com/TomasBorsje/Cloud9/refs/heads/main/assets/vanilla-minecraft-server-icon.png) Vanilla Minecraft - `vanilla.borsje.co.nz` | Map: [vanilla-map.borsje.co.nz](https://vanilla-map.borsje.co.nz)
 Fabric Minecraft with Discord integration, Voxyserver, and some other quality of life tweaks. Must be whitelisted to join.
 
-### ![Vanilla Server Logo](https://raw.githubusercontent.com/TomasBorsje/Cloud9/refs/heads/main/assets/modded-minecraft-server-icon.png) All The Mods 10 - `atm10.borsje.co.nz`
+### ![GTNH Server Logo](https://raw.githubusercontent.com/TomasBorsje/Cloud9/refs/heads/main/assets/gtnh-server-icon.png) GregTech: New Horizons - `gtnh.borsje.co.nz`
+GregTech: New Horizons 2.9.0 server. Must be whitelisted to join.
+
+### ![ATM10 Server Logo](https://raw.githubusercontent.com/TomasBorsje/Cloud9/refs/heads/main/assets/modded-minecraft-server-icon.png) All The Mods 10 - `atm10.borsje.co.nz`
 All The Mods 10 Minecraft server. Must be whitelisted to join.
 
 ### Terraria - `terraria.borsje.co.nz`
