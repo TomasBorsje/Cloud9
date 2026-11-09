@@ -62,6 +62,8 @@ spec:
             # https://docker-minecraft-server.readthedocs.io/en/latest/configuration/server-properties/
             - name: DIFFICULTY
               value: "normal"
+            - name: LEVEL
+              value: "TwoPointOh"
             - name: OPS
               value: |-
                 Wingmann
