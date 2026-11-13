@@ -63,9 +63,9 @@ spec:
             - name: DIFFICULTY
               value: "normal"
             - name: SEED
-              value: "36"
+              value: "5639298997133918617"
             - name: LEVEL
-              value: "TwoPointOh"
+              value: "TwoPointOhTwo"
             - name: OPS
               value: |-
                 Wingmann
