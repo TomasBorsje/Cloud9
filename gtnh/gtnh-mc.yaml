@@ -64,8 +64,10 @@ spec:
               value: "normal"
             - name: SEED
               value: "5639298997133918617"
+            - name: LEVEL_TYPE
+              value: "RWG2_CONTINENTS"
             - name: LEVEL
-              value: "TwoPointOhTwo"
+              value: "Rwg2Cont"
             - name: OPS
               value: |-
                 Wingmann
